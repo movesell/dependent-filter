@@ -74,7 +74,7 @@
 
                 this.options = options
                 this.loading = false
-            }
+            },
         },
 
         computed: {
@@ -100,6 +100,11 @@
                 if (!this.loading && this.value !== '' && options.filter(option => option.value == this.value).length === 0 ) {
                     this.handleChange('')
                 }
+
+                if (!this.loading && this.filter.disableEmptyOption && options.filter(option => option.value == this.value).length === 0 ) {
+                    this.handleChange(options[0].value)
+                }
+
                 return options
             },
         },
